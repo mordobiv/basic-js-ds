@@ -160,14 +160,16 @@ class BinarySearchTree {
 
     let nodeToReplace = nodeToRemove.right;
     let parentNodeToReplace = nodeToRemove;
+    let parentNodeDirection = 'right';
     while (true) {
       if (!nodeToReplace.left) break;
+      parentNodeDirection = 'left';
       parentNodeToReplace = nodeToReplace;
       nodeToReplace = nodeToReplace.left;
     }
 
     nodeToRemove.data = nodeToReplace.data;
-    parentNodeToReplace.right = nodeToReplace.right;
+    parentNodeToReplace[parentNodeDirection] = nodeToReplace.right;
   }
 
   min() {
